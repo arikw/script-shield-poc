@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Protect me please</title>
+    <script src="script-interceptor.js"></script>
+    <script>
+      window.logData = [];
+    </script>
+    <script>console.log('Attempting to load a bad script in <head>...');</script>
+    <script src="https://crimson-smoke-85e2.arik-w801.workers.dev/bad.js?ver=1"></script>
+    <script>console.log('After the bad script in <head>');</script>
+  </head>
+  <body>
+    Log:
+    <p id="log"></p>
+    <script>console.log('Attempting to load a bad script in <body>...');</script>
+    <script src="https://crimson-smoke-85e2.arik-w801.workers.dev/bad.js?ver=2"></script>
+    <script>console.log('After the bad script in <body>');</script>
+      
+    <script>
+      document.querySelector('#log').innerHTML = window.logData.join('<br/>');
+    </script>
+  </body>
+</html>
